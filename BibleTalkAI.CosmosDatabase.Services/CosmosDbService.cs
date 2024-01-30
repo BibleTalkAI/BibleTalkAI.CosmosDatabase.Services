@@ -3,11 +3,11 @@
 namespace BibleTalkAI.CosmosDatabase.Services;
 
 public class CosmosDbService<TDocument>
-    (CosmosClient db, string databaseName, CosmosContainer container)
+    (CosmosClient db, string databaseName, CosmosContainer container, string containerId)
     : IDbService<TDocument>
     where TDocument : struct
 {
-    private readonly Container _container = db.GetContainer(databaseName, container.ToString());
+    private readonly Container _container = db.GetContainer(databaseName, containerId);
     private readonly CosmosSerializer _serializer = db.ClientOptions.Serializer;
 
     public CosmosContainer CosmosContainer => container;
