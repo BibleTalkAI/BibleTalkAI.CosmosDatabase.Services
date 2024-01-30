@@ -38,10 +38,10 @@ public static class ServiceCollectionExtensions
         return cosmosClient;
     }
 
-    public static IServiceCollection AddCosmosDbService<TDocument>(this IServiceCollection services, CosmosClient cosmosClient, string databaseName, CosmosContainer container)
+    public static IServiceCollection AddCosmosDbService<TDocument>(this IServiceCollection services, CosmosClient cosmosClient, string databaseName, CosmosContainer container, string containerId)
         where TDocument : struct
     {
-        var cosmosService = new CosmosDbService<TDocument>(cosmosClient, databaseName, container);
+        var cosmosService = new CosmosDbService<TDocument>(cosmosClient, databaseName, container, containerId);
         services.AddSingleton<IDbService<TDocument>>(cosmosService);
 
         return services;

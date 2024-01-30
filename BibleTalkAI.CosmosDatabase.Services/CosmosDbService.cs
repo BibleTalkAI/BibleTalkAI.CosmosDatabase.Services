@@ -1,14 +1,14 @@
 ﻿using Microsoft.Azure.Cosmos;
-using System.Net;
 
 namespace BibleTalkAI.CosmosDatabase.Services;
 
 public class CosmosDbService<TDocument>
-    (CosmosClient db, string databaseName, CosmosContainer container)
+    (CosmosClient db, string databaseName, CosmosContainer container, string containerId)
     : IDbService<TDocument>
     where TDocument : struct
 {
-    private readonly Container _container = db.GetContainer(databaseName, container.ToString());
+    private readonly Container _container = db.GetContainer(databaseName, containerId);
+    private readonly CosmosSerializer _serializer = db.ClientOptions.Serializer;
 
     public CosmosContainer CosmosContainer => container;
 
@@ -17,17 +17,12 @@ public class CosmosDbService<TDocument>
 
     public async ValueTask<TDocument?> Get(string id)
     {
-        try
+        using ResponseMessage responseMessage = await _container.ReadItemStreamAsync(id, new PartitionKey(id));
+        if (responseMessage.IsSuccessStatusCode)
         {
-            ItemResponse<TDocument> response = await _container.ReadItemAsync<TDocument>(id,
-                new PartitionKey(id));
-
-            return response.Resource;
+            return _serializer.FromStream<TDocument>(responseMessage.Content);
         }
-        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
-        {
-            return null;
-        }
+        return null;
     }
 
     public ValueTask Create(TDocument item, Guid id)
