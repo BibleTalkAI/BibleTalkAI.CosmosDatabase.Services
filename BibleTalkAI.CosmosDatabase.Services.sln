@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34518.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibleTalkAI.CosmosDatabase.Services", "BibleTalkAI.CosmosDatabase.Services\BibleTalkAI.CosmosDatabase.Services.csproj", "{BC128B7F-0197-445C-B64D-440EC20A0A56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2597552F-46AB-4125-ACE1-0B5869B2D273}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{FA739D86-58E9-46FB-8FB5-098D724EF99C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODEOWNERS = .github\CODEOWNERS
+		.github\CODE_OF_CONDUCT.md = .github\CODE_OF_CONDUCT.md
+		.github\FUNDING.yml = .github\FUNDING.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{90FE8824-81F2-4D3D-B4AA-06F62B32B7F9}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\auto-assign.yml = .github\workflows\auto-assign.yml
+		.github\workflows\pr-build.yml = .github\workflows\pr-build.yml
+		.github\workflows\publish.yml = .github\workflows\publish.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC128B7F-0197-445C-B64D-440EC20A0A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC128B7F-0197-445C-B64D-440EC20A0A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC128B7F-0197-445C-B64D-440EC20A0A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC128B7F-0197-445C-B64D-440EC20A0A56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA739D86-58E9-46FB-8FB5-098D724EF99C} = {2597552F-46AB-4125-ACE1-0B5869B2D273}
+		{90FE8824-81F2-4D3D-B4AA-06F62B32B7F9} = {FA739D86-58E9-46FB-8FB5-098D724EF99C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8F3DBB7-78A8-4DAB-B87B-87521CFF9346}
+	EndGlobalSection
+EndGlobal
