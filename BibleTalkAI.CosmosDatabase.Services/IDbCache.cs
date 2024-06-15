@@ -11,6 +11,8 @@ public interface IDbCache<TDocument>
     ValueTask Remove(string id);
     ValueTask Replace(TDocument item, Guid id);
     ValueTask Replace(TDocument item, string id);
+    ValueTask Upsert(TDocument item, Guid id);
+    ValueTask Upsert(TDocument item, string id);
     void SetCache(Guid id, TDocument item);
     void SetCache(string id, TDocument item);
     void RemoveCached(Guid id);

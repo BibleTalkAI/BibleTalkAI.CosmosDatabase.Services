@@ -92,6 +92,18 @@ public class CosmosDbCache<TDocument>
         cache.Set(CacheKey(id), item);
     }
 
+    public async ValueTask Upsert(TDocument item, Guid id)
+    {
+        await db.Upsert(item, id);
+        cache.Set(CacheKey(id), item);
+    }
+
+    public async ValueTask Upsert(TDocument item, string id)
+    {
+        await db.Upsert(item, id);
+        cache.Set(CacheKey(id), item);
+    }
+
     public void SetCache(Guid id, TDocument item) => cache.Set(CacheKey(id), item);
     public void SetCache(string id, TDocument item) => cache.Set(CacheKey(id), item);
 

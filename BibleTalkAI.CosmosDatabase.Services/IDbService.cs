@@ -12,4 +12,6 @@ public interface IDbService<TDocument>
     ValueTask Remove(string id);
     ValueTask Replace(TDocument item, Guid id);
     ValueTask Replace(TDocument item, string id);
+    ValueTask Upsert(TDocument item, Guid id);
+    ValueTask Upsert(TDocument item, string id);
 }

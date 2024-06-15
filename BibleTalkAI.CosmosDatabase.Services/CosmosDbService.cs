@@ -45,4 +45,11 @@ public class CosmosDbService<TDocument>
     public async ValueTask Replace(TDocument item, string id)
         => await _container.ReplaceItemAsync(item, id, new PartitionKey(id),
             requestOptions: CosmosOptions.NoContentOnWrite);
+
+    public ValueTask Upsert(TDocument item, Guid id)
+        => Upsert(item, id.ToString());
+
+    public async ValueTask Upsert(TDocument item, string id)
+        => await _container.UpsertItemAsync(item, new PartitionKey(id),
+            requestOptions: CosmosOptions.NoContentOnWrite);
 }
